@@ -7,12 +7,12 @@ function tooltip.Init()
 	-- Initialize tooltip if needed
 end
 
-function tooltip.Show(self)
-	GameTooltip:SetOwner(self, "ANCHOR_NONE");
-	GameTooltip:SetPoint("TOPLEFT", self, "BOTTOMLEFT");
+function tooltip.Show(frame)
+	GameTooltip:SetOwner(frame, "ANCHOR_NONE");
+	GameTooltip:SetPoint("TOPLEFT", frame, "BOTTOMLEFT");
 	GameTooltip:AddLine(addon.Metadata.Title .. " " .. addon.Metadata.Version);
 	GameTooltip_AddBlankLineToTooltip(GameTooltip);
-	
+
 	-- Other lines can be added here
 	
 	GameTooltip:Show();

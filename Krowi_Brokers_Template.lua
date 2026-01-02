@@ -2,8 +2,12 @@ local addonName, addon = ...;
 
 addon.L = LibStub(addon.Libs.AceLocale):GetLocale(addonName);
 
-KrowiBT_SavedData = KrowiBT_SavedData or {
+KrowiBTE_Options = KrowiBTE_Options or {
 	ExampleSetting = true,
+};
+
+KrowiBTE_SavedData = KrowiBTE_SavedData or {
+	-- Saved data can be initialized here
 };
 
 error([["Make sure to update your X-Prefix in the toc file to 'KrowiB*' to match the naming convention for Krowi Brokers addons. 
@@ -22,7 +26,7 @@ Remove this line after updating the toc file."]]);
 -- Main functions
 
 function addon.GetDisplayText()
-	return addon.L["Template"] .. ": " .. (KrowiBT_SavedData.ExampleSetting and addon.L["Enabled"] or addon.L["Disabled"]);
+	return addon.L["Template"] .. ": " .. (KrowiBTE_Options.ExampleSetting and addon.L["Enabled"] or addon.L["Disabled"]);
 end
 
 local function OnClick(self, button)
@@ -55,7 +59,7 @@ function addon.Init()
 		type = "data source",
 		tocname = addonName,
 		icon = "Interface\\Icons\\INV_Misc_QuestionMark",
-		text = addon.L["Template"],
+		text = addon.Metadata.Title .. " " .. addon.Metadata.Version,
 		category = "Information",
 		OnEnter = OnEnter,
 		OnLeave = OnLeave,

@@ -23,20 +23,20 @@ function menu.Init()
 	});
 end
 
-function menu.ShowPopup()
-	menuBuilder:ShowPopup(function()
-		local menuObj = menuBuilder:GetMenu();
-		menu.CreateMenu(menuObj);
-	end);
-end
-
-function menu.CreateMenu(menuObj)
+function CreateMenu(menuObj)
 	menuBuilder:CreateTitle(menuObj, addon.Metadata.Title .. " " .. addon.Metadata.Version);
 
 	-- Examples
 	menuBuilder:CreateDivider(menuObj);
-	menuBuilder:CreateRadio(menuObj, addon.L["ExampleSetting"], KrowiBT_SavedData, {"ExampleSetting"}, "Example 1");
-	menuBuilder:CreateCheckbox(menuObj, addon.L["ExampleSetting"], KrowiBT_SavedData, {"ExampleSetting"});
+	menuBuilder:CreateRadio(menuObj, addon.L["ExampleSetting"], KrowiBTE_Options, {"ExampleSetting"}, "Example 1");
+	menuBuilder:CreateCheckbox(menuObj, addon.L["ExampleSetting"], KrowiBTE_Options, {"ExampleSetting"});
 
 	-- Other menu items can be added here
+end
+
+function menu.ShowPopup()
+	menuBuilder:ShowPopup(function()
+		local menuObj = menuBuilder:GetMenu();
+		CreateMenu(menuObj);
+	end);
 end
