@@ -1,0 +1,26 @@
+## Interface: 110207, 50503, 11508
+## Title: Krowi's Brokers |cFF1D92C2[Template]|r
+## X-Prefix: KrowiBT
+## X-Acronym: KBT
+## Version: 1.0
+## Author: Krowi-Frostmane EU
+## SavedVariables: KrowiBT_SavedData
+## Notes: [Template] Describe your addon functionality here
+## IconTexture: Interface\Icons\INV_Misc_QuestionMark
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## X-Discord-Invite-Link: https://discord.gg/mdBFQJYeQZ
+## X-Discord-Server-Name: Krowi's Addons
+## X-CurseForge: https://www.curseforge.com/wow/addons/krowi-brokers-template
+## X-Curse-Project-ID: 
+## X-Wago: https://addons.wago.io/addons/krowi-brokers-template
+## X-Wago-ID: 
+
+Libs\Files.xml
+
+Localization\Files.xml
+
+# Potentially other files
+Tooltip.lua
+Menu.luas
+Krowi_Brokers_Template.lua
