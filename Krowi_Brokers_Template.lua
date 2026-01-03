@@ -53,7 +53,7 @@ end
 
 local function OnEvent(self, event, ...)
 	if event == "PLAYER_ENTERING_WORLD" then
-		addon.TemplateLDB:Update();
+		addon.LDB:Update();
 	end
 end
 

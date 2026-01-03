@@ -13,11 +13,11 @@ function menu.Init()
 		callbacks = {
 			OnCheckboxSelect = function(filters, keys)
 				addon.Util.WriteNestedKeys(filters, keys, not menuBuilder:KeyIsTrue(filters, keys));
-				addon.TemplateLDB:Update();
+				addon.LDB:Update();
 			end,
 			OnRadioSelect = function(filters, keys, value)
 				addon.Util.WriteNestedKeys(filters, keys, value);
-				addon.TemplateLDB:Update();
+				addon.LDB:Update();
 			end
 		}
 	});
