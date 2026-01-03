@@ -51,38 +51,23 @@ local function OnLeave(self)
 	GameTooltip:Hide();
 end
 
-function addon.Init()
-	addon.Menu.Init();
-	addon.Tooltip.Init();
-
-	local dataObject = LibStub("LibDataBroker-1.1"):NewDataObject(addonName, {
-		type = "data source",
-		tocname = addonName,
-		icon = "Interface\\Icons\\INV_Misc_QuestionMark",
-		text = addon.Metadata.Title .. " " .. addon.Metadata.Version,
-		category = "Information",
-		OnEnter = OnEnter,
-		OnLeave = OnLeave,
-		OnClick = OnClick,
-	});
-
-	function dataObject:Update()
-		self.text = addon.GetDisplayText();
-	end
-
-	dataObject:Update();
-
-	addon.TemplateLDB = dataObject
-end
-
 local function OnEvent(self, event, ...)
 	if event == "PLAYER_ENTERING_WORLD" then
 		addon.TemplateLDB:Update();
 	end
 end
 
-local eventFrame = Krowi_Brokers_EventFrame or CreateFrame("Frame", "Krowi_Brokers_EventFrame");
-eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD");
-eventFrame:SetScript("OnEvent", OnEvent);
-
-addon.Init()
+local brokers = LibStub("Krowi_Brokers-1.0");
+brokers:InitBroker(
+	addonName,
+	addon,
+	"Interface\\Icons\\INV_Misc_QuestionMark",
+	OnEnter,
+	OnLeave,
+	OnClick,
+	OnEvent,
+	addon.GetDisplayText,
+	addon.Menu,
+	addon.Tooltip
+)
+brokers:RegisterEvents("PLAYER_ENTERING_WORLD");

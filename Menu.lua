@@ -26,10 +26,28 @@ end
 function CreateMenu(menuObj)
 	menuBuilder:CreateTitle(menuObj, addon.Metadata.Title .. " " .. addon.Metadata.Version);
 
-	-- Examples
 	menuBuilder:CreateDivider(menuObj);
-	menuBuilder:CreateRadio(menuObj, addon.L["ExampleSetting"], KrowiBTE_Options, {"ExampleSetting"}, "Example 1");
-	menuBuilder:CreateCheckbox(menuObj, addon.L["ExampleSetting"], KrowiBTE_Options, {"ExampleSetting"});
+
+	-- Examples
+	menuBuilder:CreateTitle(menuObj, addon.L["Time Format"]);
+	local timeFormat = menuBuilder:CreateSubmenuButton(menuObj, addon.L["Format"]);
+	menuBuilder:CreateRadio(timeFormat, addon.L["12 Hour"], KrowiBTE_Options, {"TimeFormat"}, "12H");
+	menuBuilder:CreateRadio(timeFormat, addon.L["24 Hour"], KrowiBTE_Options, {"TimeFormat"}, "24H");
+	menuBuilder:AddChildMenu(menuObj, timeFormat);
+
+	menuBuilder:CreateDivider(menuObj);
+
+	menuBuilder:CreateTitle(menuObj, addon.L["Time Display"]);
+
+	local timeMode = menuBuilder:CreateSubmenuButton(menuObj, addon.L["Display Mode"]);
+	menuBuilder:CreateRadio(timeMode, addon.L["Local Time"], KrowiBTE_Options, {"TimeMode"}, "Local");
+	menuBuilder:CreateRadio(timeMode, addon.L["Server Time"], KrowiBTE_Options, {"TimeMode"}, "Server");
+	menuBuilder:CreateRadio(timeMode, addon.L["Both"], KrowiBTE_Options, {"TimeMode"}, "Both");
+	menuBuilder:AddChildMenu(menuObj, timeMode);
+
+	menuBuilder:CreateDivider(menuObj);
+
+	menuBuilder:CreateCheckbox(menuObj, addon.L["Show Seconds"], KrowiBTE_Options, {"ShowSeconds"});
 
 	-- Other menu items can be added here
 end
