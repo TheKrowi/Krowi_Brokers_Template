@@ -33,5 +33,5 @@ Localization\Files.xml
 
 # Potentially other files
 Tooltip.lua
-Menu.luas
+Menu.lua
 Krowi_Brokers_Template.lua
